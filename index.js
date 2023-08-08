@@ -17,8 +17,8 @@ app.use(cors({
 }))
 
 
-const todoRoutes = require ('./routers/hero')
-app.use("/hero", todoRoutes)
+const heroRoutes = require ('./routers/hero')
+app.use("/hero", heroRoutes)
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_DB_URI)
