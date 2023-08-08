@@ -1,3 +1,4 @@
+const cors = require('cors')
 const express = require(`express`)
 const mongoose = require(`mongoose`)
 require(`dotenv`).config()
@@ -6,6 +7,15 @@ const app = express()
 const port = 3000
 
 app.use(express.json())
+
+app.use(cors({
+  origin:"*",
+  methods:"GET,HEAD,POST,PATCH,PUT,DELETE",
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+}))
+
 
 const todoRoutes = require ('./routers/hero')
 app.use("/hero", todoRoutes)
@@ -28,6 +38,4 @@ app.listen(port, ()=>{
   console.log(`Server on port ${port}:`, `http://localhost:${port}/`)
   console.log("-------------------------------------------")
 })
-
-
 
